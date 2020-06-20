@@ -24,7 +24,7 @@ class AccountRepository(private val accountDao: AccountDao) {
     fun getData(whereCondition: String): LiveData<Account> {
 
         var finalQuery = StringBuilder ();
-        finalQuery.append("SELECT * FROM DatabaseConstants.AccountTableKey.TABLE_NAME")
+        finalQuery.append("SELECT * FROM ${DatabaseConstants.AccountTableKey.TABLE_NAME}")
 
         if(whereCondition.isNotEmpty()) {
 
@@ -41,7 +41,7 @@ class AccountRepository(private val accountDao: AccountDao) {
 	fun getListData(whereCondition: String, orderBy: String): LiveData<List<Account>> {
 
         var finalQuery = StringBuilder ();
-        finalQuery.append("SELECT * FROM DatabaseConstants.AccountTableKey.TABLE_NAME")
+        finalQuery.append("SELECT * FROM ${DatabaseConstants.AccountTableKey.TABLE_NAME}")
 
         if(whereCondition.isNotEmpty()) {
 
@@ -65,7 +65,7 @@ class AccountRepository(private val accountDao: AccountDao) {
             return 0
         }
 
-        var finalQuery = "DELETE FROM DatabaseConstants.AccountTableKey.TABLE_NAME WHERE $whereCondition"
+        var finalQuery = "DELETE FROM ${DatabaseConstants.AccountTableKey.TABLE_NAME WHERE} $whereCondition"
         
         val simpleSQLiteQuery = SimpleSQLiteQuery(finalQuery);
 
