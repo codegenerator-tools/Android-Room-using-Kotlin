@@ -24,7 +24,7 @@ class ArtistRepository(private val artistDao: ArtistDao) {
     fun getData(whereCondition: String): LiveData<Artist> {
 
         var finalQuery = StringBuilder ();
-        finalQuery.append("SELECT * FROM DatabaseConstants.ArtistTableKey.TABLE_NAME")
+        finalQuery.append("SELECT * FROM ${DatabaseConstants.ArtistTableKey.TABLE_NAME}")
 
         if(whereCondition.isNotEmpty()) {
 
@@ -41,7 +41,7 @@ class ArtistRepository(private val artistDao: ArtistDao) {
 	fun getListData(whereCondition: String, orderBy: String): LiveData<List<Artist>> {
 
         var finalQuery = StringBuilder ();
-        finalQuery.append("SELECT * FROM DatabaseConstants.ArtistTableKey.TABLE_NAME")
+        finalQuery.append("SELECT * FROM ${DatabaseConstants.ArtistTableKey.TABLE_NAME}")
 
         if(whereCondition.isNotEmpty()) {
 
@@ -65,7 +65,7 @@ class ArtistRepository(private val artistDao: ArtistDao) {
             return 0
         }
 
-        var finalQuery = "DELETE FROM DatabaseConstants.ArtistTableKey.TABLE_NAME WHERE $whereCondition"
+        var finalQuery = "DELETE FROM ${DatabaseConstants.ArtistTableKey.TABLE_NAME} WHERE $whereCondition"
         
         val simpleSQLiteQuery = SimpleSQLiteQuery(finalQuery);
 
